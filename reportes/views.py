@@ -74,14 +74,16 @@ class ReporteLicenciasExcelMesActual(TemplateView):
                     ws.cell(row=cont, column=4).value = ausencia.fecha_inicio.strftime('%d/%m/%Y')
                 else:
                     ws.cell(row=cont, column=4).value = 'No Ingresado'
+
                 if ausencia.fecha_termino is not None:
                     ws.cell(row=cont, column=5).value = ausencia.fecha_termino.strftime('%d/%m/%Y')
                 else:
                     ws.cell(row=cont, column=5).value = 'No Ingresado'
+
                 ws.cell(row=cont, column=6).value = ausencia.dias
                 cont += 1
 
-        nombre_archivo = "ReporteLicenciasMesActual{}.xlsx".format(hoy)
+        nombre_archivo = "Reporte_Licencias_Mes_Actual_{}.xlsx".format(hoy)
         response = HttpResponse(content_type="application/ms-excel")
         content = "attachment; filename = {0}".format(nombre_archivo)
         response['Content-Disposition'] = content
@@ -149,12 +151,15 @@ class ReporteLicenciasExcelMesPasado(TemplateView):
                 ws.cell(row=cont, column=6).value = ausencia.dias
                 cont += 1
 
-        nombre_archivo = "ReporteLicencias_Mes_Anterior_{}.xlsx".format(hoy)
+        nombre_archivo = "Reporte_Licencias_Mes_Anterior_{}.xlsx".format(hoy)
         response = HttpResponse(content_type="application/ms-excel")
         content = "attachment; filename = {0}".format(nombre_archivo)
         response['Content-Disposition'] = content
         wb.save(response)
         return response
+
+
+# REPORTES DE INDUCCIONES ########################################################
 
 
 # REPORTE EN EXCEL DE TODAS LAS INDUCCIONES DESDE EL 2016
@@ -164,7 +169,7 @@ class ReporteInduccionesExcel(TemplateView):
         hoy = datetime.date.today()
         mes = mes = hoy.month
         annio = hoy.year
-        funcionarios = Funcionario.objects.filter(fecha_ingreso__year=annio >= 2016)
+        funcionarios = Funcionario.objects.filter(fecha_induccion__year=2016)
         wb = Workbook()
         ws = wb.active
         # TRABAJANDO EN EL REPORTE EXCEL
@@ -270,7 +275,7 @@ class ReporteTotalExcel(TemplateView):
             if funcionario.fecha_induccion is not None:
                 ws.cell(row=cont, column=5).value = funcionario.fecha_induccion.strftime('%d/%m/%Y')
             else:
-                ws.cell(row=cont, column=4).value = 'No Indica'
+                ws.cell(row=cont, column=5).value = 'No Indica'
             cont += 1
 
         nombre_archivo = "Reporte_Total_{}.xlsx".format(hoy)
