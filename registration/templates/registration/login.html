@@ -1,0 +1,41 @@
+{% extends 'base/base.html' %}
+{% load static %}
+{% block title %}Iniciar sesión{% endblock %}
+{% block content %}
+    <div>
+        <div style="max-width: 450px"></div>
+        <div class="ui middle aligned center aligned grid">
+            <div class="column" style="max-width: 450px">
+                <h2 class="ui primary header">
+                    <div class="content">
+                        <strong>INGRESO AL SISTEMA DE GESTIÓN DE RRHH DEL CESFAM SOL DE ORIENTE</strong>
+                    </div>
+                </h2>
+                <form class="ui large form" method="post">
+                    {% csrf_token %}
+                    <div class="ui stacked segment">
+                        <div class="field">
+                            <div class="ui left icon input">
+                                <i class="user icon"></i>
+                                <input type="text"
+                                       name="username"
+                                       placeholder="Nombre de Usuario"
+                                       autofocus maxlength="254"
+                                       required id="id_username">
+                            </div>
+                        </div>
+                        <div class="field">
+                            <div class="ui left icon input">
+                                <i class="lock icon"></i>
+                                <input type="password" name="password" placeholder="Contraseña">
+                            </div>
+                        </div>
+                        <button type="submit" class="ui fluid small teal icon button">
+                            INGRESAR
+                        </button>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+{% endblock %}

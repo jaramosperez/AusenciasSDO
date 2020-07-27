@@ -1,0 +1,129 @@
+{% extends 'base/base.html' %}
+{% load static %}
+{% block title %}REPORTES{% endblock %}
+{% block link %}
+    <link rel="stylesheet" href="{% static 'base/css/all.min.css' %}">
+{% endblock link %}
+{% block content %}
+    <div>
+        <h2 class="ui header floated left">
+            <i class="icon file excel"></i>
+            <div class="content">Reportes
+                <div class="sub header">Reportes disponibles</div>
+            </div>
+        </h2>
+        <div class="ui divider clearing"></div>
+        <div>
+            <div class="ui cards four">
+                <div class="card">
+                    <div class="content">
+                        <div class="header">
+                            Reporte Inducciones Completo
+                        </div>
+                        <div class="description">
+                            Este reporte consiste en.......
+                        </div>
+                    </div>
+                    <a href="{% url 'reportes:ReporteInduccionesExcel' %}" class="ui primary button">
+                        <i class="download icon"></i>
+                    </a>
+                </div>
+                <div class="card">
+                    <div class="content">
+                        <div class="header">
+                            Reporte Inducciones desde Acreditación
+                        </div>
+                        <div class="description">
+                            Este reporte consiste en.......
+                        </div>
+                    </div>
+                    <a href="" class="ui primary button">
+                        <i class="download icon"></i>
+                    </a>
+                </div>
+                <div class="card">
+                    <div class="content">
+                        <div class="header">
+                            Reporte último año
+                        </div>
+                        <div class="description">
+                            Este reporte consiste en.......
+                        </div>
+                    </div>
+                    <a href="" class="ui primary button">
+                        <i class="download icon"></i>
+                    </a>
+                </div>
+                <div class="card">
+                    <div class="content">
+                        <div class="header">
+                            Reporte último semestre
+                        </div>
+                        <div class="description">
+                            Este reporte consiste en.......
+                        </div>
+                    </div>
+                    <a href="" class="ui primary button">
+                        <i class="download icon"></i>
+                    </a>
+                </div>
+
+            </div>
+            <div class="ui divider clearing"></div>
+            <div class="ui cards four">
+                <div class="card">
+                    <div class="content">
+                        <div class="header">
+                            Reporte Licencias Mes Anterior
+                        </div>
+                        <div class="description">
+                        </div>
+                    </div>
+                    <a href="{% url 'reportes:ReportLicenciasExcelMesPasado' %}" class="ui red button">
+                        <i class="download icon"></i>
+                    </a>
+                </div>
+                <div class="card">
+                    <div class="content">
+                        <div class="header">
+                            Reporte Licencias mes actual
+                        </div>
+                        <div class="description">
+                            Este reporte consiste en.......
+                        </div>
+                    </div>
+                    <a href="{% url 'reportes:ReportLicenciasExcelMesActual' %}" class="ui red button">
+                        <i class="download icon"></i>
+                    </a>
+                </div>
+                <div class="card">
+                    <div class="content">
+                        <div class="header">
+                            Reporte último año
+                        </div>
+                        <div class="description">
+                            Este reporte consiste en.......
+                        </div>
+                    </div>
+                    <a href="" class="ui red button">
+                        <i class="download icon"></i>
+                    </a>
+                </div>
+                <div class="card">
+                    <div class="content">
+                        <div class="header">
+                            Reporte último semestre
+                        </div>
+                        <div class="description">
+                            Este reporte consiste en.......
+                        </div>
+                    </div>
+                    <a href="{% url 'reportes:ReporteTotalExcel' %}" class="ui red button">
+                        <i class="download icon"></i>
+                    </a>
+                </div>
+
+            </div>
+        </div>
+    </div>
+{% endblock content %}

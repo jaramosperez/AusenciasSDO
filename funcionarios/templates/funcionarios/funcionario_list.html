@@ -1,0 +1,101 @@
+{% extends 'base/base.html' %}
+{% load static %}
+{% block title %}FUNCIONARIOS{% endblock %}
+{% block link %}
+    <link rel="stylesheet" href="{% static 'base/css/dataTables.semanticui.min.css' %}">
+    <link rel="stylesheet" href="{% static 'base/css/all.min.css' %}">
+{% endblock link %}
+{% block content %}
+    <div>
+        <h2 class="ui header floated left">
+            <i class="icon briefcase"></i>
+            <div class="content">Ámbitos
+                <div class="sub header">Ámbitos trabajados en CESFAM Sol de Oriente</div>
+            </div>
+        </h2>
+        {% if request.user.is_staff %}
+            <a class="ui right floated small teal labeled icon button"
+               data-tooltip="Ingresar un nuevo funcionario"
+               data-inverted=""
+               data-position="bottom center"
+               href="{% url 'funcionarios:crear' %}">
+                <i class="user icon"></i>
+                INGRESAR TRABAJADOR
+            </a>
+        {% endif %}
+        <div class="ui divider clearing"></div>
+        <div>
+            <h3 class="ui header floated left">
+                <div class="content">
+
+                </div>
+            </h3>
+            <div>
+                <table id="funcionarios" class="ui celled very compact table bordered striped">
+                    <thead>
+                    <tr>
+                        <th>ACCIONES</th>
+                        <th>RUN</th>
+                        <th>NOMBRE</th>
+                        <th>PROFESIÓN</th>
+                    </tr>
+                    </thead>
+                    <tbody>
+                    {% for funcionario in funcionario_list %}
+                        <tr>
+                            <td style="width: 18%">
+                                <a class="ui tiny icon primary button"
+                                   href="{% url 'funcionarios:funcionario' funcionario.id funcionario.nombres|slugify %}"
+                                   data-tooltip="Ver la información"
+                                   data-inverted=""
+                                   data-position="bottom center">
+                                    <i class="icon user "></i>
+                                </a>
+
+                                {% if request.user.is_staff %}
+                                    <a class="ui tiny icon yellow button"
+                                       href="{% url 'funcionarios:actualizar' funcionario.id funcionario.nombres|slugify %}"
+                                       data-tooltip="Editar la información"
+                                       data-inverted=""
+                                       data-position="bottom center">
+                                        <i class="icon edit"></i>
+                                    </a>
+                                    <a class="ui tiny icon red button"
+                                       href="{% url 'funcionarios:borrar' funcionario.id %}"
+                                       data-tooltip="Borrar al funcionario"
+                                       data-inverted=""
+                                       data-position="bottom center">
+                                        <i class="icon trash"></i>
+                                    </a>
+                                    <a class="ui tiny icon grey button"
+                                       href="{% url 'ausencias:crear' funcionario.id %}"
+                                       data-tooltip="Agregar una ausencia"
+                                       data-inverted=""
+                                       data-position="bottom center">
+                                        <i class="icon calendar alternate"></i>
+                                    </a>
+                                {% endif %}
+                            </td>
+                            <td>{{ funcionario.run }}</td>
+                            <td>{{ funcionario.nombres | upper }} {{ funcionario.apellido_paterno | upper }} {{ funcionario.apellido_materno | upper }}</td>
+                            <td>{{ funcionario.profesion.nombre | upper }}</td>
+                        </tr>
+                    {% endfor %}
+                </table>
+            </div>
+        </div>
+    </div>
+{% endblock %}
+{% block scripts %}
+    <script src="{% static 'base/js/jquery.dataTables.min.js' %}"></script>
+    <script src="{% static 'base/js/dataTables.semanticui.min.js' %}"></script>
+    <script>
+        $(document).ready(function () {
+            $('#funcionarios').DataTable({
+                "language": {
+                    "url": "//cdn.datatables.net/plug-ins/1.10.15/i18n/Spanish.json"
+                },
+            });
+        });
+    </script>
+{% endblock scripts %}

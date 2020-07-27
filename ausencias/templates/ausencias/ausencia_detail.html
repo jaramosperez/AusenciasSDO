@@ -1,0 +1,29 @@
+{% extends 'base/base.html' %}
+{% load static %}
+{% block title %}INGRESAR AUSENCIA{% endblock %}
+{% block content %}
+  <main>
+    <div class="container py-2 col-md-6">
+      <div class="card bg-light mb-3">
+        <div class="card-header">
+          <span>
+            <strong>AUSENCIA DE:
+              {{ ausencia.funcionario.nombres | upper }}
+              {{ ausencia.funcionario.apellido_paterno | upper }}
+                {% if ausencia.funcionario.apellido_materno != null  %}
+              {{ ausencia.funcionario.apellido_materno | upper }}
+            {% endif %}</strong></span>
+        </div>
+      <div class="card-body">
+        <ul class="list-group">
+          <li class="list-group-item">FECHA INICIO: <strong>{{ ausencia.fecha_inicio }}</strong></li>
+          <li class="list-group-item">FECHA TERMINO: <strong>{{ ausencia.fecha_termino }}</strong></li>
+          <li class="list-group-item">TIPO DE AUSENCIA: <strong>{{ ausencia.get_tipo_display }}</strong></li>
+          <li class="list-group-item">CANTIDAD DE DIAS: <strong>{{ ausencia.dias }}</strong></li>
+
+        </ul>
+      </div>
+      </div>
+    </div>
+  </main>
+{% endblock content %}

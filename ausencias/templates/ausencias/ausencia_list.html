@@ -1,0 +1,73 @@
+{% extends 'base/base.html' %}
+{% load static %}
+{% block title %}AUSENCIAS{% endblock %}
+{% block link %}
+    <link rel="stylesheet" href="{% static 'base/css/dataTables.semanticui.min.css' %}">
+    <link rel="stylesheet" href="{% static 'base/css/all.min.css' %}">
+{% endblock link %}
+{% block content %}
+    <h2 class="ui header floated left">
+        <i class="icon calendar check"></i>
+        <div class="content">Ausencias
+            <div class="sub header">Listado de Ausencias de los funcionarios del CESFAM Sol de Oriente</div>
+        </div>
+    </h2>
+    <div class="ui divider clearing"></div>
+    <div>
+    <h3 class="ui header floated left">
+        <div class="content">
+
+        </div>
+    </h3>
+    <div>
+        <table id="ausencias" class="ui celled table bordered striped">
+            <thead>
+            <tr>
+                <th>ACCIONES</th>
+                <th>RUN</th>
+                <th>NOMBRE</th>
+                <th>TIPO AUSENCIA</th>
+                <th>INICIO</th>
+                <th>FIN</th>
+                <th>CANTIDAD DE DIAS</th>
+            </tr>
+            </thead>
+            <tbody>
+            {% for ausencia in ausencia_list %}
+                <tr>
+                    <td style="width: 13%"><a class="ui tiny icon primary button"
+                                              href="{% url 'ausencias:ausencia' ausencia.id %}"><i
+                            class="icon file"></i></a>
+                        {% if request.user.is_staff %}
+                            <a class="ui tiny icon yellow button"
+                               href="{% url 'ausencias:actualizar' ausencia.id %}"><i
+                                    class="icon edit"></i></a>
+                            <a class="ui tiny icon red button"
+                               href="{% url 'ausencias:borrar' ausencia.id %}"><i
+                                    class="icon trash"></i></a>
+                        {% endif %}
+                    </td>
+                    <td>{{ ausencia.funcionario.run }}</td>
+                    <td>{{ ausencia.funcionario.nombres | upper }} {{ ausencia.funcionario.apellido_paterno | upper }}</td>
+                    <td>{{ ausencia.get_tipo_display }}</td>
+                    <td>{{ ausencia.fecha_inicio }}</td>
+                    <td>{{ ausencia.fecha_termino }}</td>
+                    <td>{{ ausencia.dias }}</td>
+                </tr>
+            {% endfor %}
+        </table>
+    </div>
+{% endblock %}
+{% block scripts %}
+    <script src="{% static 'base/js/jquery.dataTables.min.js' %}"></script>
+    <script src="{% static 'base/js/dataTables.semanticui.min.js' %}"></script>
+    <script>
+        $(document).ready(function () {
+            $('#ausencias').DataTable({
+                "language": {
+                    "url": "//cdn.datatables.net/plug-ins/1.10.15/i18n/Spanish.json"
+                }
+            });
+        });
+    </script>
+{% endblock scripts %}

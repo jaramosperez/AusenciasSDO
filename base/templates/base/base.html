@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <title>RRHH | {% block title %}{% endblock %}</title>
+    {% load static %}
+    <!-- Estilos -->
+    <link href="{% static 'base/css/bootstrap-lumen.min.css' %}" rel="stylesheet">
+    <link href="{% static 'base/semantic/semantic-lumen.css' %}" rel="stylesheet">
+    <link href="{% static 'base/css/estilo.css' %}" rel="stylesheet">
+    {% block link %}{% endblock link %}
+</head>
+<body>
+<!-- Navegación -->
+<div style="padding: 55px 0 30px;">
+    <div class="ui fixed inverted menu">
+        <a class="{% if request.path == '/' %}active{% endif %} item" href="{% url 'inicio' %}">SOL DE ORIENTE</a>
+        <a class="ui {% if request.path|slice:":14" == '/funcionarios/' %}active{% endif %} item" href="{% url 'funcionarios:funcionarios' %}">Funcionarios</a>
+        <a class="ui {% if request.path|slice:":11" == '/ausencias/' %}active{% endif %} item" href="{% url 'ausencias:ausencias' %}">Ausencias</a>
+        <a class="ui {% if request.path|slice:":10" == '/reportes/' %}active{% endif %} item" href="{% url 'reportes:reporteList' %}">Reportes</a>
+        <div class="right menu">
+            {% if not request.user.is_authenticated %}
+            <a class="ui item" href="{% url 'login' %}">Acceder</a>
+            {% else %}
+                <a class="ui item" href="{% url 'logout' %}">Salir</a>
+            {% endif %}
+        </div>
+    </div>
+    <!-- Contenido -->
+    <div class="container">
+        {% block content %}{% endblock %}
+    </div>
+    <!-- Footer -->
+
+    <!-- Javascript -->
+    <script src="{% static 'base/js/jquery-3.3.1.js' %}"></script>
+    <script src="{% static 'base/semantic/semantic.min.js' %}"></script>
+    {% block scripts %}{% endblock scripts %}
+
+</div>
+
+</body>
+</html>

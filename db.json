@@ -1,0 +1,192 @@
+[
+  {
+    "model": "profesiones.profesion",
+    "pk": 1,
+    "fields": {
+      "nombre": "TANS",
+      "categoria": "C",
+      "creado": "2018-01-01",
+      "actualizado": "2018-01-01"
+    }
+  },
+  {
+    "model": "profesiones.profesion",
+    "pk": 2,
+    "fields": {
+      "nombre": "TENS",
+      "categoria": "C",
+      "creado": "2018-01-01",
+      "actualizado": "2018-01-01"
+    }
+  },
+  {
+    "model": "profesiones.profesion",
+    "pk": 3,
+    "fields": {
+      "nombre": "MÉDICO",
+      "categoria": "A",
+      "creado": "2018-01-01",
+      "actualizado": "2018-01-01"
+    }
+  },
+  {
+    "model": "profesiones.profesion",
+    "pk": 4,
+    "fields": {
+      "nombre": "QUÍMICO FARMACEUTICO(A)",
+      "categoria": "A",
+      "creado": "2018-01-01",
+      "actualizado": "2018-01-01"
+    }
+  },
+  {
+    "model": "profesiones.profesion",
+    "pk": 5,
+    "fields": {
+      "nombre": "ODONTÓLOGO(A)",
+      "categoria": "A",
+      "creado": "2018-01-01",
+      "actualizado": "2018-01-01"
+    }
+  },
+  {
+    "model": "profesiones.profesion",
+    "pk": 6,
+    "fields": {
+      "nombre": "ENFERMERO(A)",
+      "categoria": "B",
+      "creado": "2018-01-01",
+      "actualizado": "2018-01-01"
+    }
+  },
+  {
+    "model": "profesiones.profesion",
+    "pk": 7,
+    "fields": {
+      "nombre": "MATRON(A)",
+      "categoria": "B",
+      "creado": "2018-01-01",
+      "actualizado": "2018-01-01"
+    }
+  },
+  {
+    "model": "profesiones.profesion",
+    "pk": 8,
+    "fields": {
+      "nombre": "NUTRICIONISTA",
+      "categoria": "B",
+      "creado": "2018-01-01",
+      "actualizado": "2018-01-01"
+    }
+  },
+  {
+    "model": "profesiones.profesion",
+    "pk": 9,
+    "fields": {
+      "nombre": "KINESIOLOGO(A)",
+      "categoria": "B",
+      "creado": "2018-01-01",
+      "actualizado": "2018-01-01"
+    }
+  },
+  {
+    "model": "profesiones.profesion",
+    "pk": 10,
+    "fields": {
+      "nombre": "PSICOLOGO(A)",
+      "categoria": "B",
+      "creado": "2018-01-01",
+      "actualizado": "2018-01-01"
+    }
+  },
+  {
+    "model": "profesiones.profesion",
+    "pk": 11,
+    "fields": {
+      "nombre": "T. SOCIAL",
+      "categoria": "B",
+      "creado": "2018-01-01",
+      "actualizado": "2018-01-01"
+    }
+  },
+  {
+    "model": "profesiones.profesion",
+    "pk": 12,
+    "fields": {
+      "nombre": "T. OCUPACIONAL",
+      "categoria": "B",
+      "creado": "2018-01-01",
+      "actualizado": "2018-01-01"
+    }
+  },
+  {
+    "model": "profesiones.profesion",
+    "pk": 13,
+    "fields": {
+      "nombre": "ESTUDIANTE ENFERMERIA",
+      "categoria": "-",
+      "creado": "2018-01-01",
+      "actualizado": "2018-01-01"
+    }
+  },
+  {
+    "model": "profesiones.profesion",
+    "pk": 14,
+    "fields": {
+      "nombre": "INGENIERO",
+      "categoria": "B",
+      "creado": "2018-01-01",
+      "actualizado": "2018-01-01"
+    }
+  },
+  {
+    "model": "profesiones.profesion",
+    "pk": 15,
+    "fields": {
+      "nombre": "CONTADOR(A)",
+      "categoria": "B",
+      "creado": "2018-01-01",
+      "actualizado": "2018-01-01"
+    }
+  },
+  {
+    "model": "profesiones.profesion",
+    "pk": 16,
+    "fields": {
+      "nombre": "ADMINISTRATIVO(A)",
+      "categoria": "D",
+      "creado": "2018-01-01",
+      "actualizado": "2018-01-01"
+    }
+  },
+  {
+    "model": "profesiones.profesion",
+    "pk": 17,
+    "fields": {
+      "nombre": "CONDUCTOR",
+      "categoria": "E",
+      "creado": "2018-01-01",
+      "actualizado": "2018-01-01"
+    }
+  },
+  {
+    "model": "profesiones.profesion",
+    "pk": 18,
+    "fields": {
+      "nombre": "PERSONAL DE ASEO",
+      "categoria": "-",
+      "creado": "2018-01-01",
+      "actualizado": "2018-01-01"
+    }
+  },
+  {
+    "model": "profesiones.profesion",
+    "pk": 19,
+    "fields": {
+      "nombre": "GUARDIA",
+      "categoria": "-",
+      "creado": "2018-01-01",
+      "actualizado": "2018-01-01"
+    }
+  }
+]

@@ -1,0 +1,35 @@
+{% extends 'base/base.html' %}
+{% load static %}
+{% block title %}INGRESAR AUSENCIA{% endblock %}
+{% block content %}
+    <h2 class="ui header floated left">
+        <i class="icon calendar check"></i>
+        <div class="content">Ingresar ausencia para:
+            <div class="sub header"><strong>{{ funcionario.nombres }} {{ funcionario.apellido_paterno }}
+                {% if funcionario.apellido_materno != null %} {{ funcionario.apellido_materno }} {% endif %}</strong>
+            </div>
+        </div>
+    </h2>
+    <div class="ui divider clearing"></div>
+    <div class="ui compact piled segment">
+        <form class="ui small form" action="" method="post">
+            {% csrf_token %}
+                        <table class="">
+                            {{ form.as_table }}
+                        </table>
+                        <button class="ui fluid button teal" type="submit">
+                            <i class="icon save"></i>
+                            INGRESAR
+                        </button>
+
+        </form>
+    </div>
+{% endblock %}
+{% block scripts %}
+    <script>
+        $('select.dropdown').dropdown();
+    </script>
+    <script>
+        $('#example1').calendar();
+    </script>
+{% endblock scripts %}

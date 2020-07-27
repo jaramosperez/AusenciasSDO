@@ -1,0 +1,21 @@
+[[source]]
+name = "pypi"
+url = "https://pypi.org/simple"
+verify_ssl = true
+
+[dev-packages]
+
+[packages]
+django = "*"
+pillow = "*"
+openpyxl = "*"
+python-dateutil = "*"
+django-relativedelta = "*"
+
+[requires]
+python_version = "3.8"
+
+[scripts]
+dev = "python manage.py runserver 127.0.0.1:8000"
+make = "python manage.py makemigrations"
+migrate = "python manage.py migrate"

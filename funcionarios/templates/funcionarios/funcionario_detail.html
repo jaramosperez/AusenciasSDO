@@ -1,0 +1,172 @@
+{% extends 'base/base.html' %}
+{% load static %}
+{% block title %}{{ nombre_completo }}{% endblock %}
+{% block link %}
+    <link rel="stylesheet" href="{% static 'base/css/all.min.css' %}">
+{% endblock link %}
+{% block content %}
+    <div>
+        <h2 class="ui header floated left">
+            <i class="icon user"></i>
+            <div class="content"><strong>{{ nombre_completo | upper }}</strong>
+                <div class="sub header">Listado de Funcionarios del CESFAM Sol de Oriente</div>
+            </div>
+        </h2>
+        {% if request.user.is_staff %}
+            <a class="ui right floated small yellow labeled icon button"
+               data-tooltip="Actualizar la información del funcionario"
+               data-inverted=""
+               data-position="bottom center"
+               href="{% url 'funcionarios:actualizar' funcionario.id funcionario.nombres|slugify %}">
+                <i class="icon edit"></i>
+                ACTUALIZAR INFORMACIÓN
+            </a>
+        {% endif %}
+        <div class="ui divider clearing"></div>
+        <div class="ui horizontal raised segments">
+            <div class="ui red segment">
+                <div class="ui animated list divided very relaxed">
+                    <div class="item">
+                        <i class="user icon"></i>
+                        <div class="content">{{ nombre_completo | upper }}</div>
+                    </div>
+                    <div class="item">
+                        <i class="id card icon"></i>
+                        <div class="content">{{ funcionario.run | upper }}</div>
+                    </div>
+                    <div class="item">
+                        <i class="briefcase icon"></i>
+                        <div class="content">{{ funcionario.profesion.nombre | upper }}</div>
+                    </div>
+                    <div class="item">
+                        <i class="birthday icon"></i>
+                        <div class="content">{{ funcionario.fecha_nacimiento }}</div>
+                    </div>
+                    <div class="item">
+                        <i class="home icon"></i>
+                        <div class="content">{{ funcionario.direccion }}</div>
+                    </div>
+                    <div class="item">
+                        <i class="phone icon"></i>
+                        <div class="content">{{ funcionario.telefono }}</div>
+                    </div>
+                    <div class="item">
+                        <i class="mail icon"></i>
+                        <div class="content">{{ funcionario.correo | lower}}</div>
+                    </div>
+                </div>
+            </div>
+            <div class="ui blue segment">
+                <div class="ui animated list divided very relaxed">
+                    <div class="item">
+                        <div class="content">
+                            INGRESO EL: <strong>{{ funcionario.fecha_ingreso }}</strong>
+                        </div>
+                    </div>
+                    <div class="item">
+                        <div class="content">INDUCCIÓN: {% if funcionario.fecha_induccion != null %}
+                            <strong>{{ funcionario.fecha_induccion }}</strong>
+                        {% else %}
+                            <strong>NO APLICA</strong>
+                        {% endif %}</div>
+                    </div>
+                    <div class="item">
+                        <div class="content">TIPO DE CONTRATO:
+                            <strong>{{ funcionario.get_contrato_display }}</strong>
+                        </div>
+                    </div>
+                    <div class="item">
+                        <div class="content">
+                            CATEGORIA: <strong>{{ funcionario.profesion.categoria }}</strong>
+                        </div>
+                    </div>
+                    <div class="item">
+                        <div class="content">
+                            RELACIÓN: <strong>{{ funcionario.get_relacion_display }}</strong>
+                        </div>
+                    </div>
+                    {% if funcionario.get_estado_display == 'VINCULADO' %}
+                        <div class="item">
+                            <div class="content">ESTADO: <strong>
+                                {{ funcionario.get_estado_display }}
+                            </strong>
+                            </div>
+                        </div>
+                    {% else %}
+                        <div class="item">
+                            <div class="content">ESTADO: <strong style="color: red">
+                                {{ funcionario.get_estado_display }}
+                            </strong>
+                            </div>
+                        </div>
+                    {% endif %}
+                    <div class="item">
+                        <div class="content">ANEXO: <strong>{{ funcionario.anexo }}</strong></div>
+                    </div>
+                </div>
+            </div>
+            <div class="ui orange segment">
+                <div class="ui animated list divided very relaxed">
+                    <div class="item">
+                        <div class="content">
+                            FERIADO LEGAL: <strong>{{ funcionario.feridos_legales|floatformat:"-1" }} Días
+                            <span style="color: red"> por Ley 18.834,</span></strong><br> ha usado <strong
+                                style="color: green">{{ feriados_usados|floatformat:"-1" }} días,</strong>
+                            <br>y le quedan <strong style="color: #0062cc">{{ feriados_restantes|floatformat:"-1" }} días.</strong>
+                        </div>
+                    </div>
+                    <div class="item">
+                        <div class="content">
+                            ADMINISTRATIVOS: <strong>{{ funcionario.dias_administrativos|floatformat:"-1" }} Días
+                            <span style="color: red"> por Ley 18.834,</span></strong><br> ha usado <strong
+                                style="color: green">{{ administrativos_usados|floatformat:"-1" }} dias,</strong>
+                            <br>y le quedan <strong style="color: #0062cc">{{ administrativos_restantes|floatformat:"-1" }}
+                            días.</strong>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="ui divider clearing"></div>
+        <h2 class="ui header floated left">
+            <i class="icon briefcase"></i>
+            <div class="content">Ausencias
+                <div class="sub header">Listado de Ausencias de: {{ nombre_completo | upper }}</div>
+            </div>
+        </h2>
+        {% if request.user.is_staff %}
+            <a class="ui right floated small grey labeled icon button"
+               data-tooltip="Ingresar un Ausencia"
+               data-inverted=""
+               data-position="bottom center"
+               href="{% url 'ausencias:crear' funcionario.id %}">
+                <i class="user icon"></i>
+                INGRESAR AUSENCIA
+            </a>
+        {% endif %}
+        <table class="ui celled table bordered striped">
+            <thead>
+            <tr>
+                <th>TIPO AUSENCIA</th>
+                <th>INICIO</th>
+                <th>TERMINO</th>
+                <th>CANTIDAD DE DÍAS</th>
+            </tr>
+            </thead>
+            <tbody>
+            {% for ausencia in ausencia_listado %}
+                <tr {% if ausencia.get_tipo_display == 'FERIADO LEGAL' %}
+                    style="color: indianred "
+                {% elif ausencia.get_tipo_display == 'ADMINISTRATIVO' %}
+                    style="color: #005cbf"
+                {% endif %}>
+                    <td>{{ ausencia.get_tipo_display }}</td>
+                    <td>{{ ausencia.fecha_inicio }}</td>
+                    <td>{{ ausencia.fecha_termino }}</td>
+                    <td><strong>{{ ausencia.dias|floatformat:"-1" }}</strong></td>
+                </tr>
+            {% endfor %}
+            </tbody>
+        </table>
+    </div>
+{% endblock %}

@@ -1,0 +1,31 @@
+{% extends 'base/base.html' %}
+{% load static %}
+{% block title %}MODIFICAR AUSENCIA{% endblock %}
+{% block content %}
+    <main role="main">
+        <div class="container">
+            <div class="row mt-3 mb-3">
+                <div class="col-md-9 mx-auto">
+                {{ absence.employee.names | upper }}
+                    <div>
+                        {% if 'ok' in request.GET %}
+                            <p style="color: #1e7e34;">
+                                Ausencia Actualizado Correctamente.
+                                <a href="{% url 'ausencias:ausencia' ausencia.id %}">Ver Ausencia</a>
+                            </p>
+                        {% endif %}
+                        <form action="" method="post">{% csrf_token %}
+                            <table class="">
+                                {{ form.as_table }}
+                            </table>
+                            <br>
+                            <div class="text-center">
+                                <input class="btn btn-success btn-block" type="submit" value="Actualizar Ausencia" />
+                            </div>
+                        </form>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </main>
+{% endblock %}
