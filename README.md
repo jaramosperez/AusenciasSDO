@@ -4,6 +4,10 @@ Sistema diseñado para poder tener un mejor control y centralizado de los Ingres
 Ademas, se integra un módulo especial dedicado a las ausencias del personal a Planta, Contrata y Honorarios.
 - [x] Diseñado con cariño para ***Sra. Joyce Salfate, Marcela Rodriguez y Lorena Andrade.***
 
+- [x] Django 2.1
+- [x] Semantic UI
+- [x] DataTables
+
 ***
 - [x] Modulo de Administrador.
 - [x] Ingreso de Funcionarios.
