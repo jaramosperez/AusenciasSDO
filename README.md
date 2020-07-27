@@ -2,7 +2,7 @@
 
 Sistema diseñado para poder tener un mejor control y centralizado de los Ingreso e Inducciones proceso que se medide en los eventos de acreditación y reacreditación del CESFAM Sol de Oriente. 
 Ademas, se integra un módulo especial dedicado a las ausencias del personal a Planta, Contrata y Honorarios.
-- [x] Diseñado con cariño para ***Sra. Joyce Salfate, Marcela Rodriguez y Lorena Andrade.***
+Diseñado con cariño para ***Sra. Joyce Salfate, Marcela Rodriguez y Lorena Andrade.***
 
 - [x] Django 2.1
 - [x] Semantic UI
