@@ -19,7 +19,7 @@ class ReporteList(TemplateView):
     def get(self, request, *args, **kwargs):
         return render(request, self.template_name, {'title': 'REPORTES'})
 
-############ REPORTES LICENCIAS ################
+# REPORTES LICENCIAS ############################################################
 
 
 # REPORTE EXCEL LICENCIAS CORRESPONDIENTES AL MES ACTUAL
@@ -39,7 +39,7 @@ class ReporteLicenciasExcelMesActual(TemplateView):
         d3 = ws['D3']
         e3 = ws['E3']
         f3 = ws['F3']
-        ftr = Font(color=colors.RED, bold=True)
+        ftr = Font(color=colors.BLUE, bold=True)
         ftb = Font(color=colors.BLACK, bold=True, size=10)
         b1.font = ftr
         b3.font = ftb
@@ -102,7 +102,7 @@ class ReporteLicenciasExcelMesPasado(TemplateView):
         e3 = ws['E3']
         f3 = ws['F3']
         # TRABAJANDO EN EL REPORTE EXCEL
-        ftr = Font(color=colors.RED, bold=True)
+        ftr = Font(color=colors.BLUE, bold=True)
         ftb = Font(color=colors.BLACK, bold=True, size=10)
         b1.font = ftr
         b3.font = ftb
@@ -161,7 +161,7 @@ class ReporteInduccionesExcel(TemplateView):
         d3 = ws['D3']
         e3 = ws['E3']
 
-        ftr = Font(color=colors.RED, bold=True, size=10)
+        ftr = Font(color=colors.BLUE, bold=True, size=10)
         ftb = Font(color=colors.BLACK, bold=True, size=10)
         b1.font = ftr
         b3.font = ftb
@@ -214,7 +214,7 @@ class ReporteTotalExcel(TemplateView):
         d3 = ws['D3']
         e3 = ws['E3']
 
-        ftr = Font(color=colors.RED, bold=True, size=10)
+        ftr = Font(color=colors.BLUE, bold=True, size=10)
         ftb = Font(color=colors.BLACK, bold=True, size=10)
         b1.font = ftr
         b3.font = ftb
