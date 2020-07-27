@@ -7,10 +7,10 @@
     <div class="row mt-3">
       <div class="col-md-9 mx-auto">
         <div class="text-center">
-            <form action="" method="post">{% csrf_token %}
+            <form class="ui form" action="" method="post">{% csrf_token %}
                 <p>¿Estás seguro de que quieres borrar a: "{{ object.nombres }} {{ object.apellido_paterno }} {{ object.apellido_materno }}"?</p>
-                <input class="btn btn-danger" type="submit" value="Sí, borrar trabajador" />
-                <a class="btn btn-success" href="{% url 'funcionarios:funcionarios' %}">No, Volver al listado</a>
+                <button class="ui button primary" type="submit">Confirmo</button>
+                <a class="ui negative basic button" href="{% url 'funcionarios:funcionarios' %}">Cancelar</a>
             </form>
         </div>
       </div>

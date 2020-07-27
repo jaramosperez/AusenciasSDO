@@ -14,12 +14,15 @@
 <div style="padding: 55px 0 30px;">
     <div class="ui fixed inverted menu">
         <a class="{% if request.path == '/' %}active{% endif %} item" href="{% url 'inicio' %}">SOL DE ORIENTE</a>
-        <a class="ui {% if request.path|slice:":14" == '/funcionarios/' %}active{% endif %} item" href="{% url 'funcionarios:funcionarios' %}">Funcionarios</a>
-        <a class="ui {% if request.path|slice:":11" == '/ausencias/' %}active{% endif %} item" href="{% url 'ausencias:ausencias' %}">Ausencias</a>
-        <a class="ui {% if request.path|slice:":10" == '/reportes/' %}active{% endif %} item" href="{% url 'reportes:reporteList' %}">Reportes</a>
+        <a class="ui {% if request.path|slice:":14" == '/funcionarios/' %}active{% endif %} item"
+           href="{% url 'funcionarios:funcionarios' %}">Funcionarios</a>
+        <a class="ui {% if request.path|slice:":11" == '/ausencias/' %}active{% endif %} item"
+           href="{% url 'ausencias:ausencias' %}">Ausencias</a>
+        <a class="ui {% if request.path|slice:":10" == '/reportes/' %}active{% endif %} item"
+           href="{% url 'reportes:reporteList' %}">Reportes</a>
         <div class="right menu">
             {% if not request.user.is_authenticated %}
-            <a class="ui item" href="{% url 'login' %}">Acceder</a>
+                <a class="ui item" href="{% url 'login' %}">Acceder</a>
             {% else %}
                 <a class="ui item" href="{% url 'logout' %}">Salir</a>
             {% endif %}

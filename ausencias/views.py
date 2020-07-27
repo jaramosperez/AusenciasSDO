@@ -1,6 +1,5 @@
 from django.views.generic.list import ListView
 from django.views.generic.detail import DetailView
-from django.views.generic import TemplateView
 from django.views.generic.edit import CreateView, UpdateView, DeleteView
 from django.urls import reverse_lazy
 from django.utils.decorators import method_decorator
@@ -8,19 +7,19 @@ from django.contrib.auth.decorators import login_required
 from .models import Ausencia
 from .forms import AusenciaForm
 from funcionarios.models import Funcionario
-import datetime
 
-# Create your views here.
 
 # LISTAR LAS AUSENCIAS.
 @method_decorator(login_required(), name='dispatch')
 class AusenciaList(ListView):
     model = Ausencia
 
+
 # DETALLE DE AUSENCIA.
 @method_decorator(login_required(), name='dispatch')
 class AusenciaDetail(DetailView):
     model = Ausencia
+
 
 # CREAR UNA AUSENCIA PARA UN FUNCIONARIO.
 @method_decorator(login_required(), name='dispatch')
@@ -43,6 +42,7 @@ class AusenciaCreate(CreateView):
         context['funcionario'] = funcionario
         return context
 
+
 # ACTUALIZAR LOS DATOS DE UNA AUSENCIA.
 @method_decorator(login_required(), name='dispatch')
 class AusenciaUpdate(UpdateView):
@@ -52,6 +52,7 @@ class AusenciaUpdate(UpdateView):
 
     def get_success_url(self):
         return reverse_lazy('ausencias:actualizar', args=[self.object.id]) + '?ok'
+
 
 # BORRAR UNA AUSENCIA.
 @method_decorator(login_required(), name='dispatch')
