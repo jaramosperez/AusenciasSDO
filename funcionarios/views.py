@@ -42,7 +42,6 @@ class FuncionarioDetail(DetailView):
             feriados_restantes = 0
         context['feriados_restantes'] = feriados_restantes
 
-
         # CÁLCULO DE DIAS ADMINISTRATIVOS.
         dias_administrativos = 0
         cantidad_administrativos = Ausencia.objects.filter(funcionario_id=self.object.id).filter(tipo='AD').filter(

@@ -1,6 +1,7 @@
 from django.db import models
 
-# Create your models here.
+
+# Modelo de Profesión
 class Profesion(models.Model):
     nombre = models.CharField(verbose_name="nombre", max_length=50)
     CATEGORIA_CHOICES = (
@@ -23,3 +24,5 @@ class Profesion(models.Model):
 
     def __str__(self):
         return self.nombre
+
+
