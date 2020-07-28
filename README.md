@@ -7,6 +7,8 @@ Diseñado con cariño para ***Sra. Joyce Salfate, Marcela Rodriguez y Lorena And
 - [x] Django 2.1
 - [x] Semantic UI
 - [x] DataTables
+- [x] SQLite
+- [x] Libreria Openpyxl
 
 ***
 - [x] Modulo de Administrador.
