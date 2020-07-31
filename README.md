@@ -23,7 +23,7 @@ Diseñado con cariño para ***Sra. Joyce Salfate, Marcela Rodriguez y Lorena And
 - [x] Mostrar listado con funcionarios que se encuentren con licencia vigente.
 - [ ] Mostrar un Listado con los ingresos Ordenados por Categoría, con su respectiva fecha de Inducción.
 - [ ] Mantener los documentos que deben ser enviados por correo en el proceso de Inducción. [Presentaciones]
-- [ ] Entregar un reporte mensual sobre las licencias médicas en excel.
+- [x] Entregar un reporte mensual sobre las licencias médicas en excel.
 - [ ] Entregar un reporte Mensual, Trimestral, Semestral y Anual de los Ingresos e Inducciones.
 - [ ] Mostrar una alerta cuando un Funcionario este de Cumpleaños.
 
